@@ -6,21 +6,13 @@ include 'vue/entete.php';
 
 include 'vue/menu.php';	
 
-if(isset($_GET['ctl']))
-{
-	switch($_GET['ctl']){
-		
-			case 'service':
-			 include 'controleur/ctlService.php';
-			 break;
-			 
-			 case 'emp':
-			 include 'controleur/ctlEmploye.php';
-			 break;
-			 
-		}
-	
-}
+// Switch pour les pages
+
+// Si la page n'est pas définie, on affiche la page d'accueil
+
+// Si la page est définie, on affiche la page correspondante
+
+
 include 'vue/pied.php';
 
 ?>        				 

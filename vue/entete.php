@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a href="index.php" class="navbar-brand">Gestionnaire</a>
-            <div class="navbar-nav ms-auto">
-                <a href="#" class="nav-item nav-link"><button class="btn btn-outline-primary">Connexion</button></a>
-            </div>
-    </div>
-</nav>
-   <head>
-      <meta charset="utf-8">
-      <title>Projet - Note de frais</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-   </head>
-  <body>
-<!-- Entête / Nav Bar -->
-		
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Projet - Note de frais</title>
+</head>
+<body>
+    

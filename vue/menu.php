@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Page Connexion</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="vue/css/util.css">
-	<link rel="stylesheet" type="text/css" href="vue/css/main.css">
-	<link rel="stylesheet" type="text/css" href="vue/css/entete.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="index.php" class="navbar-brand">Gestionnaire</a>
+            <div class="navbar-nav ms-auto">
+                <a href="#" class="nav-item nav-link"><button class="btn btn-outline-primary">Connexion</button></a>
+            </div>
+    </div>
+</nav>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-
-
-<!--===============================================================================================-->
-</head>
+		

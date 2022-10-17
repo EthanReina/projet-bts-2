@@ -2,9 +2,14 @@
 
 session_start();
 
-include 'vue/entete.php';
 
-include 'vue/menu.php';	
+
+if (isset($_SESSION['connect']))
+{
+    
+}
+include 'vue/entete.php';
+include 'vue/menu.php';
 // testd
 // Switch pour les pages
 

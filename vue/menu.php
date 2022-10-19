@@ -2,7 +2,13 @@
     <div class="container">
         <a href="index.php" class="navbar-brand">Gestionnaire</a>
             <div class="navbar-nav ms-auto">
-                <a href="index.php?ctl=utilisateur&action=formConnect" class="nav-item nav-link"><button class="btn btn-outline-primary">Connexion</button></a>
+                <?php
+                    if(isset($_SESSION['connect'])){ ?>
+                        <a href="index.php?ctl=utilisateur&action=deConnect" class="nav-item nav-link"><button class="btn btn-outline-primary">Déconnexion</button></a>
+                    <?php } else { ?>
+                        <a href="index.php?ctl=utilisateur&action=formConnect" class="nav-item nav-link"><button class="btn btn-outline-primary">Connexion</button></a>
+                    <?php } 
+                ?>
             </div>
     </div>
 </nav>

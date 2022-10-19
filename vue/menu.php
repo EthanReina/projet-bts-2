@@ -4,6 +4,7 @@
             <div class="navbar-nav ms-auto">
                 <?php
                     if(isset($_SESSION['connect'])){ ?>
+                        <a href="#" class="nav-item nav-link"><img id="profil" src="vue/images/profil.png" alt="Icone Profil"></a>
                         <a href="index.php?ctl=utilisateur&action=deConnect" class="nav-item nav-link"><button class="btn btn-outline-primary">Déconnexion</button></a>
                     <?php } else { ?>
                         <a href="index.php?ctl=utilisateur&action=formConnect" class="nav-item nav-link"><button class="btn btn-outline-primary">Connexion</button></a>

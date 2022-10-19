@@ -31,7 +31,7 @@ switch($action) {
             $_SESSION['email'] = $email;
             header('location: index.php');
         } else {
-            echo "<h1>Les informations de connexion sont incorrectes</h1>";
+            echo "<h3 class='text-center'>Les informations de connexion sont incorrectes</h3>";
 
         }
         break;

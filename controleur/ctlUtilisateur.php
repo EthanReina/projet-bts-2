@@ -34,7 +34,16 @@ switch($action) {
             echo "<h3 class='text-center'>Les informations de connexion sont incorrectes</h3>";
 
         }
+
         break;
+
+    case 'profil':
+            
+            $email = $_SESSION['email'];
+            $result = DbUtilisateur::getInfoUser($email);
+            include 'vue/vueUtilisateur/v_profilUtilisateur.php';
+    
+            break;
           
     }
     

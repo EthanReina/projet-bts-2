@@ -119,28 +119,22 @@
                             foreach ($infoVehicule as $vehicule) {
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
-<<<<<<< HEAD
                                
                                 echo "<td>" . $vehicule['carburant'] . "</td>";
-=======
                                 echo "<td>" . $vehicule['carburant'] . "</td>";
                                 echo "<td>" . $vehicule['nb_places'] . "</td>";
                                 echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
 
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                                 echo "</tr>";
                             }
                             ?>
                         </table>
 
-<<<<<<< HEAD
-=======
                         <?php
                         }
                         
                         ?>
 
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                         <div class="text-center">
 
                             <!-- Bouton pour ajouter un véhicule -->
@@ -162,23 +156,20 @@
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
                                         </div>
-<<<<<<< HEAD
                                         
                                         <p> carburant :</p>
-  <select name =carburant ><option>gazole </option>
-   <option>essence </option>
-   <option>electrique </option></select>
+                                        <select name =carburant ><option>gazole </option>
+                                        <option>essence </option>
+                                        <option>electrique </option></select>
 
-</div>
+                                        </div>
 
-=======
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="carburant" placeholder="Carburant">
                                         </div>
                                         <div class="mb-3">
                                             <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
                                         </div>
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                             
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>

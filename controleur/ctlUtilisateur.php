@@ -43,9 +43,7 @@ switch($action) {
             echo "<h3 class='text-center'>Les informations de connexion sont incorrectes</h3>";
 
         }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
+
 
         break;
 
@@ -76,10 +74,6 @@ switch($action) {
     
         $result = DbUtilisateur::ajoutVehicule($marque, $carburant, $_SESSION['email']);
         header('location: index.php?ctl=utilisateur&action=profil');
->>>>>>> Stashed changes
-=======
-
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
         break;
 
 

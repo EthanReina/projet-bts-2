@@ -18,8 +18,5 @@
 
     </form>
 </div>
-
-<!-- bfeuzgbfiu -->
-  <button type="submit" class="btn btn-primary">Connexion</button>
 </form>
 </div>

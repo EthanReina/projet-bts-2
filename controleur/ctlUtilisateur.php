@@ -71,11 +71,17 @@ switch($action) {
         $result = DbUtilisateur::ajoutVehicule($marque, $carburant, $_SESSION['email']);
         header('location: index.php?ctl=utilisateur&action=profil');
         break;
+
+
+        
+    case 'supprimer':
+
+        //appel à la base de donnée le modele
+        DbUtilisateur::supprimerVehicule($_GET['id']);
+        header("location: index.php?ctl=utilisateur&action=profil");
+        break;
+
           
     }
-
-
-
-    
     
     ?>

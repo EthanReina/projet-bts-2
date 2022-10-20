@@ -34,13 +34,18 @@ class DbUtilisateur
     // Fonction qui permet de récupérer les informations du véhicule de l'utilisateur via son email (Variable $utilisateur)
     public static function getVehicule($utilisateur)
     {
-        $sql="select marque, carburant from vehicule where utilisateur='$utilisateur'";
+        $sql="select * from vehicule where utilisateur='$utilisateur'";
         $objResultat=connectPdo::getObjPdo()->query($sql);
         $result=$objResultat->fetchAll();
         return $result;
     }
 
-
+    public static function supprimerVehicule($id)
+	{
+		$sql = "delete from vehicule where id_vehicule=$id";		
+		connectPdo::getObjPdo()->exec($sql);	
+		
+	}
 
 
 }

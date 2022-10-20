@@ -92,6 +92,12 @@
 
                         <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
 
+                        <?php
+                        if(count($infoVehicule)==0){
+                            echo "<br>Vous n'avez pas de véhicule";
+                        }
+                        else{?>
+
                         <table class="table">
                             <tr>
                                 <th>Marque</th>
@@ -103,10 +109,16 @@
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
                                 echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
                                 echo "</tr>";
                             }
                             ?>
                         </table>
+
+                        <?php
+                        }
+                        
+                        ?>
 
                         <div class="text-center">
 
@@ -136,7 +148,6 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>
                                             <button type="submit" class="btn btn-outline-success">Ajouter</button>
-                                            <a class='px-2' href=index.php?ctl=service&action=supprimer&id=".$ligne['id']."><img src='./vue/images/trash.png' height=20 width=20></a>
                                         </div>
                                     </div>
 

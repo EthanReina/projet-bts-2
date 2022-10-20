@@ -136,6 +136,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>
                                             <button type="submit" class="btn btn-outline-success">Ajouter</button>
+                                            <a class='px-2' href=index.php?ctl=service&action=supprimer&id=".$ligne['id']."><img src='./vue/images/trash.png' height=20 width=20></a>
                                         </div>
                                     </div>
 

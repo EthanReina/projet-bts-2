@@ -142,7 +142,7 @@
 
                                     <div class="container w-75">
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
+                                            <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule" required>
                                         </div>
                                         <select class="form-select mb-3" aria-label="Default select example" name="carburant">
                                             <option value="diesel">Diesel</option>
@@ -151,7 +151,7 @@
                                         </select>
                                         
                                         <div class="mb-3">
-                                            <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
+                                            <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place" required>
                                          </div>
                             
                                         <div class="modal-footer">

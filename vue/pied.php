@@ -5,7 +5,7 @@
     <div class="container-fluid bg-light text-dark">
       <div class="row">
         <div class="col-12">
-          <p class="text-center pt-3">© 2022 - Projet Note de Frais </p>
+          <p class="text-center pt-3">© 2022 - Projet Note de Frais Ethan Reina Majid Benmerah Kawtar Bouaaza</p>
         </div>
       </div>
     </div>

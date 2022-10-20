@@ -1,6 +1,6 @@
 <div class="form-group">
    <form action='index.php?ctl=utilisateur&action=validConnect' method='post'>
-<div class="container w-50 pt-5">
+<div class="container w-25 pt-5">
 <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Adresse E-Mail</label>

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 border-bottom">
     <div class="container">
-        <a href="index.php" class="navbar-brand">Gestionnaire</a>
+        <a href="index.php" class="navbar-brand">Note de frais</a>
             <div class="navbar-nav ms-auto">
                 <?php
                     if(isset($_SESSION['connect'])){ ?>

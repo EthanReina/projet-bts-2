@@ -144,9 +144,12 @@
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
                                         </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" name="carburant" placeholder="Carburant">
-                                        </div>
+                                        <select class="form-select mb-3" aria-label="Default select example" name="carburant">
+                                            <option value="diesel">Diesel</option>
+                                            <option value="essence">Essence</option>
+                                            <option value="electrique">Electrique</option>
+                                        </select>
+                                        
                                         <div class="mb-3">
                                             <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
                                          </div>

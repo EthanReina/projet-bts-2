@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
-                                        </div>
+                                         </div>
                             
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>

@@ -88,7 +88,7 @@
 
                     <div class="mb-3">
 
-                        <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule</label>
+                        <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule(s)</label>
 
                         <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
 
@@ -102,6 +102,7 @@
                             <tr>
                                 <th>Marque</th>
                                 <th>Carburant</th>
+                                <th>Nombre de place</th>
                             </tr>
                             <?php
                             // On parcours le tableau $infoVehicule renvoyé par la fonction getInfoVehicule(), on affiche les informations du véhicule
@@ -109,7 +110,9 @@
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
                                 echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "<td>" . $vehicule['nb_places'] . "</td>";
                                 echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
+
                                 echo "</tr>";
                             }
                             ?>
@@ -143,6 +146,9 @@
                                         </div>
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="carburant" placeholder="Carburant">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
                                         </div>
                             
                                         <div class="modal-footer">

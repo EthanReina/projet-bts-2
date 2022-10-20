@@ -148,14 +148,12 @@
                                         </div>
                                         
                                         <p> carburant :</p>
-                                        <select name =carburant ><option>gazole </option>
-                                        <option>essence </option>
-                                        <option>electrique </option></select>
+                                    <select name =carburant >
+                                        <option>gazole</option>
+                                        <option>essence</option>
+                                        <option>electrique</option>
+                                    </select>
 
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" name="carburant" placeholder="Carburant">
                                         </div>
                                         <div class="mb-3">
                                             <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">

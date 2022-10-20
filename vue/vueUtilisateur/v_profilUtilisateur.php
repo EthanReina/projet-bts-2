@@ -88,27 +88,59 @@
 
                     <div class="mb-3">
 
+<<<<<<< HEAD
                         <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule</label>
 
                         <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
 
+=======
+                        <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule(s)</label>
+
+                        <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
+
+                        <?php
+                        if(count($infoVehicule)==0){
+                            echo "<br>Vous n'avez pas de véhicule";
+                        }
+                        else{?>
+
+>>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                         <table class="table">
                             <tr>
                                 <th>Marque</th>
                                 <th>Carburant</th>
+<<<<<<< HEAD
+=======
+                                <th>Nombre de place</th>
+>>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                             </tr>
                             <?php
                             // On parcours le tableau $infoVehicule renvoyé par la fonction getInfoVehicule(), on affiche les informations du véhicule
                             foreach ($infoVehicule as $vehicule) {
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
+<<<<<<< HEAD
                                
                                 echo "<td>" . $vehicule['carburant'] . "</td>";
+=======
+                                echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "<td>" . $vehicule['nb_places'] . "</td>";
+                                echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
+
+>>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                                 echo "</tr>";
                             }
                             ?>
                         </table>
 
+<<<<<<< HEAD
+=======
+                        <?php
+                        }
+                        
+                        ?>
+
+>>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                         <div class="text-center">
 
                             <!-- Bouton pour ajouter un véhicule -->
@@ -130,6 +162,7 @@
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
                                         </div>
+<<<<<<< HEAD
                                         
                                         <p> carburant :</p>
   <select name =carburant ><option>gazole </option>
@@ -138,6 +171,14 @@
 
 </div>
 
+=======
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control" name="carburant" placeholder="Carburant">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
+                                        </div>
+>>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                             
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>

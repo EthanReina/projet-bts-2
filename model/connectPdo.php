@@ -1,5 +1,7 @@
 <?php
 
+// Informations de connexion à la base de données
+
 class connectPdo 
 {
 	private static $db; 
@@ -10,7 +12,7 @@ class connectPdo
 		 
 		 if(!isset(self::$db))
 		 { 
-		  self::$db = new PDO('mysql:host=localhost;dbname=note_de_frais', 'root', 'root');  // PDO Connexion base de données 
+		  self::$db = new PDO('mysql:host=localhost;dbname=note_de_frais', 'root', ' ');  // PDO Connexion base de données 
 		  self::$db ->query('SET NAMES utf8'); 
 		  self::$db->query('SET CHARACTER SET utf8');   
 		 } 

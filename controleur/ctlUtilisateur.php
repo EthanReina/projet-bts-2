@@ -68,7 +68,7 @@ switch($action) {
     case 'ajoutVehicule':
     
         $marque = $_POST['marque'];
-       $carburant =  $_POST['carburant'];
+        $carburant =  $_POST['carburant'];
         
        
     

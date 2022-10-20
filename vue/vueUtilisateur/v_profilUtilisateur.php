@@ -88,12 +88,6 @@
 
                     <div class="mb-3">
 
-<<<<<<< HEAD
-                        <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule</label>
-
-                        <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
-
-=======
                         <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule(s)</label>
 
                         <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
@@ -104,15 +98,11 @@
                         }
                         else{?>
 
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                         <table class="table">
                             <tr>
                                 <th>Marque</th>
                                 <th>Carburant</th>
-<<<<<<< HEAD
-=======
                                 <th>Nombre de place</th>
->>>>>>> 632aa2e2a035ccea35b780bd0f9886de09391bf8
                             </tr>
                             <?php
                             // On parcours le tableau $infoVehicule renvoyé par la fonction getInfoVehicule(), on affiche les informations du véhicule

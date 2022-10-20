@@ -14,5 +14,3 @@
   <button type="submit" class="btn btn-primary">Connexion</button>
 </form>
 </div>
-
-<!-- coucou -->

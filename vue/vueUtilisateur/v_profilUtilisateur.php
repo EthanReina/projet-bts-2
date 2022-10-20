@@ -1,3 +1,5 @@
+<!-- Vue utilisateur -->
+
 <div class="container">
 
     <div class="row p-5" style="height: 600px">
@@ -8,12 +10,16 @@
 
                 <div class="col-12 text-center">
                     <img src="vue/images/profil.png" alt="Profil" class="img-fluid" style="height: 175px">
+
+                    <!-- ucfirst() met la premiere lettre du mot En Majuscule -->
                     <h3 class="text-center display-6 fs-2"><?php echo ucfirst($result['prenom']) . " " . ucfirst($result['nom']); ?></h3>
                 </div>
 
             </div>
 
             <div class="row text-center">
+
+                <!-- Le href renvoie sur le ctl utilisateur et l'action 'profile', elle affiche les informations utilisateurs  -->
                 <button class="w-100 h-100 btn btn-outline-primary fs-4 rounded-0" style="border: 0"><a class="nav-link" href="index.php?ctl=utilisateur&action=profil">Informations</a></button>
             </div>
 
@@ -84,18 +90,30 @@
 
                         <label for="exampleInputEmail1" class="form-label pt-2 display-6 fs-5">Véhicule</label>
 
+                        <!-- Les véhicules de l'utilisateur sont affichés dans un tableau  -->
+
                         <table class="table">
                             <tr>
                                 <th>Marque</th>
                                 <th>Carburant</th>
                             </tr>
+                            <?php
+                            // On parcours le tableau $infoVehicule renvoyé par la fonction getInfoVehicule(), on affiche les informations du véhicule
+                            foreach ($infoVehicule as $vehicule) {
+                                echo "<tr>";
+                                echo "<td>" . $vehicule['marque'] . "</td>";
+                                echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
                         </table>
 
                         <div class="text-center">
 
+                            <!-- Bouton pour ajouter un véhicule -->
                             <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un véhicule</button>
 
-                                                        <!-- Modal -->
+                            <!-- Le Pop-up qui s'affiche sur le clic du bouton ci-dessus -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -104,14 +122,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
+                                <!-- Formulaire dans le pop up, elle redirige vers le controller utilisateur et l'action ajoutVehicule -->
                                 <form action="index.php?ctl=utilisateur&action=ajoutVehicule" method="post">
 
                                     <div class="container w-75">
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Marque du véhicule">
+                                            <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" placeholder="Carburant">
+                                            <input type="text" class="form-control" name="carburant" placeholder="Carburant">
                                         </div>
                             
                                         <div class="modal-footer">
@@ -125,7 +144,7 @@
                                 </div>
                             </div>
                             </div>
-                            
+
                         </div>
                     </div>
 

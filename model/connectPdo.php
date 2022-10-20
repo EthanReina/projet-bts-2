@@ -1,5 +1,7 @@
 <?php
 
+// Informations de connexion à la base de données
+
 class connectPdo 
 {
 	private static $db; 

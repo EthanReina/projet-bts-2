@@ -10,11 +10,11 @@
     <title>
         
         <?php
-            
+            // Si il n'existe pas la variable de session connect, alors on affiche le titre "Page d'accueil"
             if(!isset($_SESSION['connect'])) {
 
                 echo "Page d'accueil";
-
+            // Sinon on affiche le titre "Profil"
             } else {
                     
                     echo "Espace membre - Connecté";

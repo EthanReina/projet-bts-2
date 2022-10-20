@@ -64,17 +64,6 @@ switch($action) {
     
             break;
 
-    // si l'action est ajoutVehicule, on ajoute le véhicule de l'utilisateur via la fonction ajoutVehicule() de la class dbUtilisateur
-    case 'ajoutVehicule':
-    
-        $marque = $_POST['marque'];
-        $carburant =  $_POST['carburant'];
-        
-       
-    
-        $result = DbUtilisateur::ajoutVehicule($marque, $carburant, $_SESSION['email']);
-        header('location: index.php?ctl=utilisateur&action=profil');
-        break;
 
 
     // si l'action est profil, on affiche le profil de l'utilisateur (vue v_profilUtilisateur.php)

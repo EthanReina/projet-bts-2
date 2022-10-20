@@ -110,8 +110,7 @@
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
                                
-                                echo "<td>" . $vehicule['carburant'] . "</td>";
-                                echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "<td>" . ucfirst($vehicule['carburant']) . "</td>";
                                 echo "<td>" . $vehicule['nb_places'] . "</td>";
                                 echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
 
@@ -146,15 +145,12 @@
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="marque" placeholder="Marque du véhicule">
                                         </div>
+                                        <select class="form-select mb-3" aria-label="Default select example" name="carburant">
+                                            <option value="diesel">Diesel</option>
+                                            <option value="essence">Essence</option>
+                                            <option value="electrique">Electrique</option>
+                                        </select>
                                         
-                                        <p> carburant :</p>
-                                    <select name =carburant >
-                                        <option>gazole</option>
-                                        <option>essence</option>
-                                        <option>electrique</option>
-                                    </select>
-
-                                        </div>
                                         <div class="mb-3">
                                             <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place">
                                         </div>

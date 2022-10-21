@@ -109,7 +109,7 @@
                             foreach ($infoVehicule as $vehicule) {
                                 echo "<tr>";
                                 echo "<td>" . $vehicule['marque'] . "</td>";
-                                echo "<td>" . $vehicule['carburant'] . "</td>";
+                                echo "<td>" . ucfirst($vehicule['carburant']) . "</td>";
                                 echo "<td>" . $vehicule['nb_places'] . "</td>";
                                 echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
 

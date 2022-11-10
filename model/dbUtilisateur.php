@@ -11,7 +11,7 @@ class DbUtilisateur
     {
 
         $requete = connectPdo::getObjPdo()->prepare("SELECT COUNT(id_utilisateur) as validation FROM utilisateurs WHERE email = ? AND mot_de_passe = ?");
-        $requete->execute(array($Email, $Password));
+        $requete->execute(array($Email, '1'.sha1($Password)));
         $result = $requete->fetch();
         return $result;
     }
@@ -24,7 +24,7 @@ class DbUtilisateur
         $result=$objResultat->fetch();
         return $result;
     }
-
+    
     // Fonction qui permet d'associer un véhicule à un utilisateur via son adresse email (On utilise l'email de l'utilisateur comme jointure)
     public static function ajoutVehicule($marque, $carburant, $nb_places, $utilisateur)
     {

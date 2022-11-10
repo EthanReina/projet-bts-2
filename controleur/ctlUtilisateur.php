@@ -87,7 +87,8 @@ switch($action) {
         break;
 
     case 'formNoteFrais':
-
+        $email = $_SESSION['email'];
+        $infoVehicule = DbUtilisateur::getVehicule($email);
         include 'vue/vueUtilisateur/formNoteFrais.php';
 
         break;

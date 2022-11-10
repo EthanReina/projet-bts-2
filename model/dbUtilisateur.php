@@ -9,9 +9,10 @@ class DbUtilisateur
     // Fonction qui permet de vérifier que les informations de connexion sont correctes et que l'utilisateur existe bien dans la base de données
     public static function getUser($Email, $Password)
     {
-        $sql="select COUNT(id_utilisateur) as validation from utilisateurs where email='$Email' and mot_de_passe='$Password'";
-        $objResultat=connectPdo::getObjPdo()->query($sql);
-        $result=$objResultat->fetch();
+
+        $requete = connectPdo::getObjPdo()->prepare("SELECT COUNT(id_utilisateur) as validation FROM utilisateurs WHERE email = ? AND mot_de_passe = ?");
+        $requete->execute(array($Email, $Password));
+        $result = $requete->fetch();
         return $result;
     }
 

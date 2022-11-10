@@ -86,7 +86,14 @@ switch($action) {
         header("location: index.php?ctl=utilisateur&action=profil");
         break;
 
-          
-    }
+    case 'formNoteFrais':
+
+        include 'vue/vueUtilisateur/formNoteFrais.php';
+
+        break;
+        
     
+    }
+
+
     ?>

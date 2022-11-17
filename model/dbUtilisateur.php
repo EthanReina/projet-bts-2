@@ -26,9 +26,9 @@ class DbUtilisateur
     }
     
     // Fonction qui permet d'associer un véhicule à un utilisateur via son adresse email (On utilise l'email de l'utilisateur comme jointure)
-    public static function ajoutVehicule($marque, $carburant, $nb_places, $utilisateur)
-    {
-        $sql="INSERT INTO vehicule (marque, carburant, nb_places, utilisateur) VALUES ('$marque', '$carburant','$nb_places', '$utilisateur')";
+    public static function ajoutVehicule($marque, $carburant, $nb_places, $puissance_fiscale, $utilisateur)
+    { 
+        $sql="INSERT INTO vehicule (marque, carburant, nb_places,puissance_fiscale, utilisateur) VALUES ('$marque', '$carburant','$nb_places', '$puissance_fiscale', '$utilisateur')";
         $objResultat=connectPdo::getObjPdo()->query($sql);
     }
 

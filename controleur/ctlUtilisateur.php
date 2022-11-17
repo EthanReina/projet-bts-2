@@ -71,9 +71,10 @@ switch($action) {
         $marque = $_POST['marque'];
         $carburant = $_POST['carburant'];
         $nb_places = $_POST['nb_places'];
+        $puissance_fiscale = $_POST['puissance_fiscale'];
 
         
-        DbUtilisateur::ajoutVehicule($marque, $carburant, $nb_places, $_SESSION['email']);
+        DbUtilisateur::ajoutVehicule($marque, $carburant, $nb_places, $puissance_fiscale, $_SESSION['email']);
         header('location: index.php?ctl=utilisateur&action=profil');
         break;
 

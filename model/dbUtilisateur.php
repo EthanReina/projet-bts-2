@@ -59,6 +59,64 @@ class DbUtilisateur
         return $result;
     }
 
+    public static function calculIndemniteKilometrique($puissance,$distance)
+    {
+        if($puissance<=3){
+            if($distance<=5000){
+                return $distance*0.502;  
+            }
+            else if($distance>5000 && $distance<=20000){
+                return ($distance*0.3)+1007;
+            }
+            else{
+                return $distance*0.35;
+            }
+        }
+        else if($puissance==4){
+            if($distance<=5000){
+                return $distance*0.575;
+            }
+            else if($distance>5000 && $distance<=20000){
+                return ($distance*0.323)+1262;
+            }
+            else{
+                return $distance*0.387;
+            }
+        }
+        if($puissance==5){
+            if($distance<=5000){
+                return $distance*0.663;
+            }
+            else if($distance>5000 && $distance<=20000){
+                return ($distance*0.339)+1320;
+            }
+            else{
+                return $distance*0.405;
+            }
+        }
+        if($puissance==6){
+            if($distance<=5000){
+                return $distance*0.631;
+            }
+            else if($distance>5000 && $distance<=20000){
+                return ($distance*0.355)+1382;
+            }
+            else{
+                return $distance*0.425;
+            }
+        }
+        else{
+            if($distance<=5000){
+                return $distance*0.661;
+            }
+            else if($distance>5000 && $distance<=20000){
+                return ($distance*0.374)+1435;
+            }
+            else{
+                return $distance*0.446;
+            }
+        }
+    }
 
 }
 ?>

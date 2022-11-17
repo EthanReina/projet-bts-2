@@ -39,6 +39,8 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     <div class="container text-center pt-2">
 
+        <?php echo DbUtilisateur::calculIndemniteKilometrique(4,4020) ?>
+
         <h1 class="pb-5">Bienvenue <?php echo ucfirst($result['prenom']); echo ' '.ucfirst($result['nom']) ?></h1>
         <a href="index.php?ctl=utilisateur&action=formNoteFrais"><button class="btn btn-outline-secondary mt-5">Créer une note de frais</button></a>
 

@@ -92,9 +92,37 @@ switch($action) {
         include 'vue/vueUtilisateur/formNoteFrais.php';
 
         break;
+
+    case 'validFormNoteFrais':
+
+        if(isset($_POST['montant']) && isset($_POST['libelle']) && isset($_POST['vehicule'])) {
+            $infoVehicule = dbUtilisateur::getVehiculeById($_POST['vehicule']);
+
+            echo '<div class="container"><table border>';
+
+            echo '<h3>Mission : ' . $_POST['mission'] . '</h3>';
+
+            echo '<tr>
+                <th>libelle</th>
+                <th>montant<th>
+            </tr>';
+
+            for($i = 0; $i < count($_POST['montant']); $i++) {
+            
+            echo '<tr>
+                <td>'.$_POST['libelle'][$i].'</td>
+                <td>'.$_POST['montant'][$i].'</td>
+            </tr>';
+            }
+           echo ' </table></div>';
+
+           echo '<br><h5>Véhicule: ' . $infoVehicule['marque'] .' '.$infoVehicule['carburant'].' ' .$infoVehicule['nb_places'].' places</h5>';
         
+        } else {
+            echo '<h3 class="text-center">Vous n\'avez pas rempli tous les champs</h3>';
+            echo '<a class="text-center nav-link mt-5" href="index.php?ctl=utilisateur&action=formNoteFrais">Retour</a>';
+        }
+            
+        }
     
-    }
-
-
-    ?>
+?>

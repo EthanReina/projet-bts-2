@@ -50,6 +50,15 @@ class DbUtilisateur
 		
 	}
 
+    // Get Véhicule with id_vehicule
+    public static function getVehiculeById($id)
+    {
+        $sql="select * from vehicule where id_vehicule='$id'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+    }
+
 
 }
 ?>

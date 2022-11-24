@@ -59,6 +59,30 @@ class DbUtilisateur
         return $result;
     }
 
+    public static function ajoutNoteDeFrais($mission,$montant,$id_utilisateur)
+    {
+        $sql="INSERT INTO note_de_frais (mission, montant, id_utilisateur) VALUES ('$mission', '$montant','$id_utilisateur')";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+    }
+
+    public static function maxNoteFrais() { 
+        $sql="select MAX(id_note) as nb from note_de_frais";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+     }
+
+    public static function ajoutFc($libelle,$montant,$id_note)
+    {
+        $sql="INSERT INTO ligne_fc (libelle, montant_fc, id_note) VALUES ('$libelle', '$montant','$id_note')";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+    }
+    public static function ajoutFk($montant,$kilometre,$id_note)
+    {
+        $sql="INSERT INTO ligne_fkm (montant, kilometre, id_note) VALUES ('$montant', '$kilometre','$id_note')";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+    }
+
     public static function calculIndemniteKilometrique($puissance,$distance)
     {
         if($puissance<=3){

@@ -77,11 +77,45 @@ class DbUtilisateur
         $sql="INSERT INTO ligne_fc (libelle, montant_fc, id_note) VALUES ('$libelle', '$montant','$id_note')";
         $objResultat=connectPdo::getObjPdo()->query($sql);
     }
+
+
     public static function ajoutFk($montant,$kilometre,$id_note)
     {
         $sql="INSERT INTO ligne_fkm (montant, kilometre, id_note) VALUES ('$montant', '$kilometre','$id_note')";
         $objResultat=connectPdo::getObjPdo()->query($sql);
     }
+
+
+    public static function getNoteDeFrais($id_utilisateur) {
+
+        $sql="select * from note_de_frais where id_utilisateur='$id_utilisateur'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
+    public static function getLigneFc($id_note) {
+
+        $sql="select * from ligne_fc where id_note='$id_note'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
+    public static function getLigneFk($id_note) {
+
+        $sql="select * from ligne_fkm where id_note='$id_note'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
+
+
+
 
     public static function calculIndemniteKilometrique($puissance,$distance)
     {

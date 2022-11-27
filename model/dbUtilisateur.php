@@ -16,6 +16,7 @@ class DbUtilisateur
         return $result;
     }
 
+    
     // Fonction qui permet de récupérer les informations de l'utilisateur via son email
     public static function getInfoUser($Email)
     {

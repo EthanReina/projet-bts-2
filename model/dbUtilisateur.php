@@ -24,6 +24,27 @@ class DbUtilisateur
         $result=$objResultat->fetch();
         return $result;
     }
+
+    public static function getUserById($id)
+    {
+        $sql="select * from utilisateurs where id_utilisateur='$id'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+    }
+
+    public static function modifiermdp($pwd)
+
+     {
+
+       $email=$_SESSION['email'];
+       $pwd = '1'.sha1($pwd);
+
+        $sql = "UPDATE utilisateurs SET mot_de_passe='$pwd' WHERE email='$email'";
+
+        connectPdo::getObjPdo()->exec($sql);
+
+     }
     
     // Fonction qui permet d'associer un véhicule à un utilisateur via son adresse email (On utilise l'email de l'utilisateur comme jointure)
     public static function ajoutVehicule($marque, $carburant, $nb_places, $puissance_fiscale, $utilisateur)
@@ -89,6 +110,26 @@ class DbUtilisateur
     public static function getNoteDeFrais($id_utilisateur) {
 
         $sql="select * from note_de_frais where id_utilisateur='$id_utilisateur'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
+    public static function getNoteDeFraisById($id_note) {
+
+        $sql="select * from note_de_frais where id_note='$id_note'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+
+    }
+
+    
+
+    public static function getAllNoteDeFrais() {
+
+        $sql="select * from note_de_frais";
         $objResultat=connectPdo::getObjPdo()->query($sql);
         $result=$objResultat->fetchAll();
         return $result;

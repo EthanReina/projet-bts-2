@@ -17,6 +17,12 @@ if(isset($_GET['ctl'])) {
             include 'controleur/ctlUtilisateur.php';
 
             break;
+        
+        case 'gestion';
+
+            include 'controleur/ctlgestion.php';
+            
+            break;
 
     }
 

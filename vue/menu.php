@@ -29,7 +29,60 @@
 if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     include 'model/dbUtilisateur.php';
+
     
+    
+    if($_SESSION['droit'] == 1) { 
+        
+        $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+        
+        ?>
+
+
+        <p class="text-center">Vous êtes un compte administrateur.</p>
+
+
+        <div class="container">
+            <div class="row pt-5">
+                
+                <?php
+
+                    foreach($infoAllNoteDeFrais as $value) { 
+                        
+                        $infoUtilisateur = DbUtilisateur::getUserById($value['id_utilisateur']);
+                        
+                        ?>
+
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="display-5 fs-5"><?php echo 'Crée par <b>' . $infoUtilisateur['prenom'].' '.strtoupper($infoUtilisateur['nom']).'</b>'; ?></h5>
+                                    <p class="card-title"><?php echo 'Mission : ' . $value['mission']; ?></p>
+                                    <p class="card-text">
+                                        <?php echo $value['date']; ?>
+                                    </p>
+                                    <div class="container text-center">
+                                        <a href="index.php?ctl=gestion&action=consulter&idnote=<?php echo $value['id_note']?>" class="btn btn-primary">Consulter</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <?php }
+
+
+                ?>
+
+
+            </div>
+        </div>
+        
+        
+
+
+
+     <?php } else {
+
     $result = DbUtilisateur::getInfoUser($_SESSION['email']);
     $id_utilisateur = $result['id_utilisateur'];
     $infoNoteDeFrais = DbUtilisateur::getNoteDeFrais($id_utilisateur);
@@ -51,7 +104,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
                 <p class="pt-5 fs-5">Pas de note de frais</p>
 
-            <?php } else { 
+            <?php } else {
                 
                 //$infoLigneFc = DbUtilisateur::getLigneFc($infoNoteDeFrais['id_note']); ?>
                 
@@ -174,7 +227,6 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     </div>
 
-
-<?php }
+<?php } }
 
 ?>

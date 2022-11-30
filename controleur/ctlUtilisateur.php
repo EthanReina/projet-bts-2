@@ -36,6 +36,8 @@ switch($action) {
         $password = $_POST['password'];
         $result = DbUtilisateur::getUser($email, $password);
         if ($result['validation'] == 1) {
+            $infoUser = DbUtilisateur::getInfoUser($email);
+            $_SESSION['droit'] = $infoUser['droit'];
             $_SESSION['connect'] = 1;
             $_SESSION['email'] = $email;
             header('location: index.php');
@@ -63,7 +65,17 @@ switch($action) {
             }
     
             break;
+            
+    case 'modification':
 
+        $pwd=$_POST['pwd'];
+        DbUtilisateur::modifiermdp($pwd);
+        
+        header("location: index.php?ctl=utilisateur&action=profil");
+        
+        break;
+        
+                
 
     // si l'action est ajoutVehicule, on ajoute le véhicule de l'utilisateur via la fonction ajoutVehicule() de la class dbUtilisateur
     case 'ajoutVehicule':

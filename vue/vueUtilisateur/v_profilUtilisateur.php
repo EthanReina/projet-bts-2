@@ -76,6 +76,7 @@
                         <th>Marque</th>
                         <th>Carburant</th>
                         <th>Nombre de place</th>
+                        <th>Puissance fiscale</th>
                     </tr>
                     <?php
                     // On parcours le tableau $infoVehicule renvoyé par la fonction getInfoVehicule(), on affiche les informations du véhicule
@@ -84,6 +85,7 @@
                         echo "<td>" . $vehicule['marque'] . "</td>";
                         echo "<td>" . ucfirst($vehicule['carburant']) . "</td>";
                         echo "<td>" . $vehicule['nb_places'] . "</td>";
+                        echo "<td>" . $vehicule['puissance_fiscale'] . "</td>";
                         echo "<td><a class='px-2' href='index.php?ctl=utilisateur&action=supprimer&id=".$vehicule['id_vehicule']."'><img src='./vue/images/trash.png' height=20 width=20></a></td>";
 
                         echo "</tr>";
@@ -125,6 +127,10 @@
                                 
                                 <div class="mb-3">
                                     <input type="number" class="form-control" name="nb_places" placeholder="Nombre de place" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input type="number" class="form-control" name="puissance_fiscale" placeholder="Puissance fiscale" required>
                                 </div>
                     
                                 <div class="modal-footer">

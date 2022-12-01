@@ -105,6 +105,16 @@ switch($action) {
         include 'vue/vueUtilisateur/formNoteFrais.php';
 
         break;
+        
+    case 'supprimerLigneFc':
+        DbUtilisateur::supprimerLigneFc($_GET['idLigneFc']);
+        header("location: index.php");
+        break;
+
+    case 'modifierLigneFc':
+        DbUtilisateur::modifierLigneFc($_POST['libelle'],$_POST['montant'],$_GET['idLigneFc']);
+        header("location: index.php");
+        break;
 
     case 'validFormNoteFrais':
 

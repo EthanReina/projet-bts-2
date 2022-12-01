@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 30 nov. 2022 à 12:42
+-- Généré le : jeu. 01 déc. 2022 à 13:01
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -32,21 +32,11 @@ CREATE TABLE IF NOT EXISTS `ligne_fc` (
   `id_fc` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) NOT NULL,
   `montant_fc` varchar(255) NOT NULL,
+  `justificatif` text NOT NULL,
   `statut` int(11) NOT NULL DEFAULT '0',
   `id_note` int(11) NOT NULL,
   PRIMARY KEY (`id_fc`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `ligne_fc`
---
-
-INSERT INTO `ligne_fc` (`id_fc`, `libelle`, `montant_fc`, `statut`, `id_note`) VALUES
-(1, 'Restaurant', '50', 0, 1),
-(2, 'Essence', '20', 0, 1),
-(3, 'Hotel', '100', 0, 1),
-(4, 'Péage', '15', 0, 2),
-(5, 'Parking', '40', 0, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,15 +52,7 @@ CREATE TABLE IF NOT EXISTS `ligne_fkm` (
   `statut` int(11) NOT NULL DEFAULT '0',
   `id_note` int(11) NOT NULL,
   PRIMARY KEY (`id_fkm`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `ligne_fkm`
---
-
-INSERT INTO `ligne_fkm` (`id_fkm`, `montant`, `kilometre`, `statut`, `id_note`) VALUES
-(1, 75, 150, 0, 1),
-(2, 12, 23, 0, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -87,15 +69,7 @@ CREATE TABLE IF NOT EXISTS `note_de_frais` (
   `statut` int(11) NOT NULL DEFAULT '0',
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_note`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `note_de_frais`
---
-
-INSERT INTO `note_de_frais` (`id_note`, `date`, `mission`, `montant`, `statut`, `id_utilisateur`) VALUES
-(1, '2022-11-24 15:02:20', 'Déplacement', '245', 0, 2),
-(2, '2022-11-24 15:19:41', 'Test', '67', 0, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -113,16 +87,15 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `login` varchar(255) NOT NULL,
   `droit` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id_utilisateur`, `prenom`, `nom`, `email`, `mot_de_passe`, `login`, `droit`) VALUES
-(1, 'Jason', 'Segor', 'jasonestmoche@gmail.com', '1d48ebf10dcfd200c60179428c078cae5d57467bc', 'jason91', 0),
-(2, 'Lilian', 'Heno', 'lilianestbeau@gmail.com', '140bd001563085fc35165329ea1ff5c5ecbdbbeef', 'lilianll', 0),
-(3, 'admin', 'admin', 'admin@admin', '1d033e22ae348aeb5660fc2140aec35850c4da997', 'admin', 1);
+(1, 'admin', 'admin', 'admin@admin', '1d033e22ae348aeb5660fc2140aec35850c4da997', 'admin', 1),
+(2, 'Ethan', 'Reina', 'ethan@reina', '122c6cbd800df36ef20a7da622af2e6fdc441dacb', 'ethan.reina', 0);
 
 -- --------------------------------------------------------
 
@@ -139,15 +112,7 @@ CREATE TABLE IF NOT EXISTS `vehicule` (
   `puissance_fiscale` int(11) NOT NULL,
   `utilisateur` text NOT NULL,
   PRIMARY KEY (`id_vehicule`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `vehicule`
---
-
-INSERT INTO `vehicule` (`id_vehicule`, `marque`, `carburant`, `nb_places`, `puissance_fiscale`, `utilisateur`) VALUES
-(1, 'Lamborghini', 'essence', 2, 5, 'jasonestmoche@gmail.com'),
-(2, 'peugeot', 'essence', 5, 2, 'lilianestbeau@gmail.com');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -187,6 +187,17 @@ class DbUtilisateur
 
     }
 
+    public static function supprimerLigneFc($id_ligne_fc) {
+        $sql="DELETE From ligne_fc WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPDO::getObjPdo()->query($sql);
+    }
+
+
+    public static function modifierLigneFc($libelle,$montant,$id_ligne_fc) {
+        $sql="UPDATE ligne_fc SET libelle='$libelle', montant_fc='$montant' WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPDO::getObjPdo()->query($sql);
+    }
+
 
 
 

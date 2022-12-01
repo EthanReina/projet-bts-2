@@ -206,8 +206,42 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                                                     echo '<p class="text-danger fw-bold">Refusé</p>';
                                                                 }
                                                             ?>
-
+                                                        </td>
+                                                        <td>
+                                                            <a href="index.php?ctl=utilisateur&action=supprimerLigneFc&idLigneFc=<?php echo $DonneesInfoLigneFc['id_fc'] ?>"><img src="vue\images\trash.png" alt="supprimer" height="20" style="padding-right:10px;"></a>
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="vue\images\crayon.png" alt="modifier" height="20"></a>
+                                                        </td>
                                                     </tr>
+
+                                                    <!-- Le Pop-up qui s'affiche sur le clic du bouton ci-dessus -->
+                                                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header mb-3">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Modification</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+
+                                                        <!-- Formulaire dans le pop up, elle redirige vers le controller utilisateur et l'action ajoutVehicule -->
+                                                        <form action="index.php?ctl=utilisateur&action=modifierLigneFc&idLigneFc=<?php echo $DonneesInfoLigneFc['id_fc']?>" method="post">
+
+                                                            <div class="container w-75">
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control" name="libelle" placeholder="Libellé" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control" name="montant" placeholder="Montant" required>
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Fermer</button>
+                                                                    <button type="submit" class="btn btn-outline-success">Modifier</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+
+                                                    </tr>   
 
                                                 <?php } ?>
                                     </tr>

@@ -49,16 +49,6 @@ switch($action) {
 
         break;
 
-        case 'supprimerLigneFc':
-            DbUtilisateur::supprimerLigneFc($_GET['idLigneFc']);
-            header("location: index.php");
-            break;
-    
-        case 'modifierLigneFc':
-            DbUtilisateur::modifierLigneFc($_POST['libelle'],$_POST['montant'],$_GET['idLigneFc']);
-            header("location: index.php");
-            break;
-
 
     // si l'action est profil, on affiche le profil de l'utilisateur (vue v_profilUtilisateur.php)
     // On récupère les infos de l'utilisateur via la fonction getUserInfo() de la class dbUtilisateur

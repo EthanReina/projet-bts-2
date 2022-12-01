@@ -34,7 +34,20 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
     
     if($_SESSION['droit'] == 1) { 
         
-        $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+        if(!isset($_GET['statut'])) {
+            $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+        } else {
+            if($_GET['statut'] == 4) {
+                $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+            }
+            else if ($_GET['statut'] == 0) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } else if ($_GET['statut'] == 1) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } else if ($_GET['statut'] == 2) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } 
+        }
         
         ?>
 
@@ -43,7 +56,24 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
 
         <div class="container">
+
+            <form class="row g-3">
+            <div class="col-auto">
+                <select class="form-select" name="statut">
+                    <option selected value="4">Tout voir</option>
+                    <option value="0">En attente de validation</option>
+                    <option value="1">Validé</option>
+                    <option value="2">Refusé</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Rechercher</button>
+            </div>
+            </form>
+
             <div class="row pt-5">
+
+
                 
                 <?php
 
@@ -61,6 +91,17 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                     <p class="card-text">
                                         <?php echo $value['date']; ?>
                                     </p>
+                                    <p><?php
+                                    
+                                        if($value['statut'] == 0) {
+                                            echo '<p class="text-warning fw-bold">En attente de validation</p>';
+                                        } else if($value['statut'] == 1) {
+                                            echo '<p class="text-success fw-bold">Validé</p>';
+                                        } else if($value['statut'] == 2) {
+                                            echo '<p class="text-danger fw-bold">Refusé</p>';
+                                        }
+                                    
+                                    ?></p>
                                     <div class="container text-center">
                                         <a href="index.php?ctl=gestion&action=consulter&idnote=<?php echo $value['id_note']?>" class="btn btn-primary">Consulter</a>
                                     </div>
@@ -85,6 +126,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     $result = DbUtilisateur::getInfoUser($_SESSION['email']);
     $id_utilisateur = $result['id_utilisateur'];
+    
     $infoNoteDeFrais = DbUtilisateur::getNoteDeFrais($id_utilisateur);
 
 
@@ -205,7 +247,17 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                 </div>
 
                                 <div class="p-2 border fw-bold text-warning fs-5 text-center">
-                                    En attente
+                                    <?php 
+                                    
+                                                if($DonneesInfoNoteDeFrais['statut'] == 0) {
+                                                    echo 'En attente';
+                                                } else if ($DonneesInfoNoteDeFrais['statut'] == 1) {
+                                                    echo '<p class="text-success fw-bold">Validé</p>';
+                                                } else {
+                                                    echo'<p class="text-danger fw-bold">Refusé</p>';
+                                                }
+
+                                    ?>
                                 </div>
 
                                 </div>

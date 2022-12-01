@@ -11,7 +11,21 @@ switch($action) {
 
     case 'consulter':
         $result = DbUtilisateur::getNoteDeFraisById($_GET['idnote']);
+        $infoLigneFc = DbUtilisateur::getLigneFc($_GET['idnote']);
+        $infoLigneFk = DbUtilisateur::getLigneFk($_GET['idnote']);
         include 'vue/vueGestion/v_gestionNoteDeFrais.php'; 
+        break;
+
+    case 'validStatut':
+        DbUtilisateur::validStatutLigneFc($_GET['idLigneFc']);
+        header('location: index.php?ctl=gestion&action=consulter&idnote='.$_GET['idnote']);
+    
+        break;
+
+    case 'deniedStatut':
+        DbUtilisateur::deniedStatutLigneFc($_GET['idLigneFc']);
+        header('location: index.php?ctl=gestion&action=consulter&idnote='.$_GET['idnote']);
+    
         break;
             
 }

@@ -4,7 +4,7 @@
 
         <div class="card w-1">
             <div class="card-body">
-                <h5 class="card-title"> <h4><p1 class="fst-italic"> <p class="text-center" >Mes informations <?php// echo ucfirst($result['prenom']) . " " . ucfirst($result['nom']); ?></p></p1></h4>
+                <h5 class="card-title"> <h4><p1 class="fst-italic"> <p class="text-center" >Mes informations</p></p1></h4>
 
             </div>
 

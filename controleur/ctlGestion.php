@@ -26,8 +26,7 @@ switch($action) {
         DbUtilisateur::deniedStatutLigneFc($_GET['idLigneFc']);
         header('location: index.php?ctl=gestion&action=consulter&idnote='.$_GET['idnote']);
     
-        break;
-            
+        break;           
 }
     
 ?>

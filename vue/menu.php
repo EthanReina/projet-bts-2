@@ -30,9 +30,104 @@ if ($utilisateur['statut'] == '1') {  //On vérifie si l'utilisateur est un admi
 if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     include 'model/dbUtilisateur.php';
+
     
+    
+    if($_SESSION['droit'] == 1) { 
+        
+        if(!isset($_GET['statut'])) {
+            $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+        } else {
+            if($_GET['statut'] == 4) {
+                $infoAllNoteDeFrais = DbUtilisateur::getAllNoteDeFrais();
+            }
+            else if ($_GET['statut'] == 0) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } else if ($_GET['statut'] == 1) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } else if ($_GET['statut'] == 2) {
+                $infoAllNoteDeFrais = DbUtilisateur::getNoteDeFraisByStatut($_GET['statut']);
+            } 
+        }
+        
+        ?>
+
+
+        <p class="text-center">Vous êtes un compte administrateur.</p>
+
+
+        <div class="container">
+
+            <form class="row g-3">
+            <div class="col-auto">
+                <select class="form-select" name="statut">
+                    <option selected value="4">Tout voir</option>
+                    <option value="0">En attente de validation</option>
+                    <option value="1">Validé</option>
+                    <option value="2">Refusé</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Rechercher</button>
+            </div>
+            </form>
+
+            <div class="row pt-5">
+
+
+                
+                <?php
+
+                    foreach($infoAllNoteDeFrais as $value) { 
+                        
+                        $infoUtilisateur = DbUtilisateur::getUserById($value['id_utilisateur']);
+                        
+                        ?>
+
+                        <div class="col-3">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="display-5 fs-5"><?php echo 'Crée par <b>' . $infoUtilisateur['prenom'].' '.strtoupper($infoUtilisateur['nom']).'</b>'; ?></h5>
+                                    <p class="card-title"><?php echo 'Mission : ' . $value['mission']; ?></p>
+                                    <p class="card-text">
+                                        <?php echo $value['date']; ?>
+                                    </p>
+                                    <p><?php
+                                    
+                                        if($value['statut'] == 0) {
+                                            echo '<p class="text-warning fw-bold">En attente de validation</p>';
+                                        } else if($value['statut'] == 1) {
+                                            echo '<p class="text-success fw-bold">Validé</p>';
+                                        } else if($value['statut'] == 2) {
+                                            echo '<p class="text-danger fw-bold">Refusé</p>';
+                                        }
+                                    
+                                    ?></p>
+                                    <div class="container text-center">
+                                        <a href="index.php?ctl=gestion&action=consulter&idnote=<?php echo $value['id_note']?>" class="btn btn-primary">Consulter</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <?php }
+
+
+                ?>
+
+
+            </div>
+        </div>
+        
+        
+
+
+
+     <?php } else {
+
     $result = DbUtilisateur::getInfoUser($_SESSION['email']);
     $id_utilisateur = $result['id_utilisateur'];
+    
     $infoNoteDeFrais = DbUtilisateur::getNoteDeFrais($id_utilisateur);
 
 
@@ -52,7 +147,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
                 <p class="pt-5 fs-5">Pas de note de frais</p>
 
-            <?php } else { 
+            <?php } else {
                 
                 //$infoLigneFc = DbUtilisateur::getLigneFc($infoNoteDeFrais['id_note']); ?>
                 
@@ -153,7 +248,17 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                 </div>
 
                                 <div class="p-2 border fw-bold text-warning fs-5 text-center">
-                                    En attente
+                                    <?php 
+                                    
+                                                if($DonneesInfoNoteDeFrais['statut'] == 0) {
+                                                    echo 'En attente';
+                                                } else if ($DonneesInfoNoteDeFrais['statut'] == 1) {
+                                                    echo '<p class="text-success fw-bold">Validé</p>';
+                                                } else {
+                                                    echo'<p class="text-danger fw-bold">Refusé</p>';
+                                                }
+
+                                    ?>
                                 </div>
 
                                 </div>
@@ -174,6 +279,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
 
     </div>
+
 
 
 <?php } }else{
@@ -367,11 +473,9 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
     </div>
 
 
-<?php }
+
+<?php } }
+
 
 ?>
-}
-
-?>
-
 

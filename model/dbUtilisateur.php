@@ -25,6 +25,27 @@ class DbUtilisateur
         $result=$objResultat->fetch();
         return $result;
     }
+
+    public static function getUserById($id)
+    {
+        $sql="select * from utilisateurs where id_utilisateur='$id'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+    }
+
+    public static function modifiermdp($pwd)
+
+     {
+
+       $email=$_SESSION['email'];
+       $pwd = '1'.sha1($pwd);
+
+        $sql = "UPDATE utilisateurs SET mot_de_passe='$pwd' WHERE email='$email'";
+
+        connectPdo::getObjPdo()->exec($sql);
+
+     }
     
     // Fonction qui permet d'associer un véhicule à un utilisateur via son adresse email (On utilise l'email de l'utilisateur comme jointure)
     public static function ajoutVehicule($marque, $carburant, $nb_places, $puissance_fiscale, $utilisateur)
@@ -73,9 +94,9 @@ class DbUtilisateur
         return $result;
      }
 
-    public static function ajoutFc($libelle,$montant,$id_note)
+    public static function ajoutFc($libelle,$montant,$justificatif, $id_note)
     {
-        $sql="INSERT INTO ligne_fc (libelle, montant_fc, id_note) VALUES ('$libelle', '$montant','$id_note')";
+        $sql="INSERT INTO ligne_fc (libelle, montant_fc, justificatif,  id_note) VALUES ('$libelle', '$montant','$justificatif','$id_note')";
         $objResultat=connectPdo::getObjPdo()->query($sql);
     }
 
@@ -96,6 +117,26 @@ class DbUtilisateur
 
     }
 
+    public static function getNoteDeFraisById($id_note) {
+
+        $sql="select * from note_de_frais where id_note='$id_note'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+
+    }
+
+    
+
+    public static function getAllNoteDeFrais() {
+
+        $sql="select * from note_de_frais";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
     public static function getLigneFc($id_note) {
 
         $sql="select * from ligne_fc where id_note='$id_note'";
@@ -104,6 +145,8 @@ class DbUtilisateur
         return $result;
 
     }
+
+
 
     public static function getLigneFk($id_note) {
 
@@ -114,8 +157,7 @@ class DbUtilisateur
 
     }
 
-<<<<<<< Updated upstream
-=======
+
     public static function validStatutLigneFc($id_ligne_fc) {
 
         $sql="UPDATE ligne_fc SET statut='1' WHERE id_fc='$id_ligne_fc'";
@@ -130,6 +172,7 @@ class DbUtilisateur
 
 
     }
+
 
     public static function supprimerLigneFc($id_ligne_fc) {
         $sql="DELETE From ligne_fc WHERE id_fc='$id_ligne_fc'";
@@ -156,11 +199,6 @@ class DbUtilisateur
         return $result;
 
     }
-
->>>>>>> Stashed changes
-
-
-
 
     public static function calculIndemniteKilometrique($puissance,$distance)
     {

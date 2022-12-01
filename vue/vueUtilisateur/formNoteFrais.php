@@ -1,6 +1,6 @@
 <div class="container w-50">
 
-    <form action="index.php?ctl=utilisateur&action=validFormNoteFrais" method="post">
+    <form action="index.php?ctl=utilisateur&action=validFormNoteFrais" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <h1 class="display-5 fs-2">Mission</h1>
         <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="mission" required>
@@ -43,7 +43,7 @@
     </div>
 
     <div class="mt-5 form-check text-center">
-    <button type="submit" class="btn btn-secondary">Créer</button>
+        <button type="submit" class="btn btn-secondary" name="submit">Créer</button>
     </div>
     </form>
 
@@ -51,7 +51,7 @@
 
 <script>
 
-    const element =   `<div class="row g-3 mt-1">
+    const element =   `<div class="row g-3 mt-4 border-top">
 
                             <div class="col-4" style="width: 60%">
                                 <label for="">Libellé</label>
@@ -67,11 +67,13 @@
                                 <button type="button" id="close" class="btn btn-danger mt-4"> <img src='vue/images/close.png' height=15></button>
                             </div>
 
-                        </div>
+                            <div class="mt-3">
+                                <label for="formFile" class="form-label">Joindre le justificatif</label>
+                                <input class="form-control" type="file" id="formFile" name="images[]">
+                            </div>
 
+                        </div>`
 
-  
-                        `
 
     $(document).ready(function() {
         $('#add').click(function() {

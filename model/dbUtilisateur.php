@@ -114,6 +114,50 @@ class DbUtilisateur
 
     }
 
+<<<<<<< Updated upstream
+=======
+    public static function validStatutLigneFc($id_ligne_fc) {
+
+        $sql="UPDATE ligne_fc SET statut='1' WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+
+    }
+
+    public static function deniedStatutLigneFc($id_ligne_fc) {
+
+        $sql="UPDATE ligne_fc SET statut='2' WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+
+
+    }
+
+    public static function supprimerLigneFc($id_ligne_fc) {
+        $sql="DELETE From ligne_fc WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPDO::getObjPdo()->query($sql);
+    }
+
+    public static function modifierLigneFc($libelle,$montant,$id_ligne_fc) {
+        $sql="UPDATE ligne_fc SET libelle='$libelle', montant_fc='$montant' WHERE id_fc='$id_ligne_fc'";
+        $objResultat=connectPDO::getObjPdo()->query($sql);
+    }
+
+    public static function changerStatutGlobal($statut, $id_note) {
+
+        $requete = connectPdo::getObjPdo()->prepare("UPDATE note_de_frais SET statut = ? WHERE id_note = ?");
+        $requete->execute(array($statut, $id_note));
+
+    }
+
+    public static function getNoteDeFraisByStatut($statut) {
+
+        $sql="select * from note_de_frais where statut='$statut'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetchAll();
+        return $result;
+
+    }
+
+>>>>>>> Stashed changes
 
 
 

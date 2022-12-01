@@ -93,9 +93,9 @@ class DbUtilisateur
         return $result;
      }
 
-    public static function ajoutFc($libelle,$montant,$id_note)
+    public static function ajoutFc($libelle,$montant,$justificatif, $id_note)
     {
-        $sql="INSERT INTO ligne_fc (libelle, montant_fc, id_note) VALUES ('$libelle', '$montant','$id_note')";
+        $sql="INSERT INTO ligne_fc (libelle, montant_fc, justificatif,  id_note) VALUES ('$libelle', '$montant','$justificatif','$id_note')";
         $objResultat=connectPdo::getObjPdo()->query($sql);
     }
 
@@ -145,6 +145,8 @@ class DbUtilisateur
 
     }
 
+
+
     public static function getLigneFk($id_note) {
 
         $sql="select * from ligne_fkm where id_note='$id_note'";
@@ -184,7 +186,6 @@ class DbUtilisateur
         return $result;
 
     }
-
 
 
 

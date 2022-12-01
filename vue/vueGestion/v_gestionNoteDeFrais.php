@@ -14,6 +14,7 @@
                     <th>Libellé</th>
                     <th>Montant</th>
                     <th>Statut</th>
+                    <th>Justificatif</th>
                     <th>Action</th>
                 </tr>
                 <tr>
@@ -42,6 +43,15 @@
                                             else {
                                                 echo '<p class="text-danger fw-bold">Refusé</p>';
                                             }
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        <?php 
+                                            if ($DonneesInfoLigneFc['justificatif'] == NULL) {
+                                                echo '<p class="text-danger fw-bold">Aucun</p>'; } 
+                                            else { 
+                                                echo '<a class="fw-bold" href='.$DonneesInfoLigneFc['justificatif'].'>'.$DonneesInfoLigneFc['justificatif'].'</a>'; }
                                         ?>
                                     </td>
 

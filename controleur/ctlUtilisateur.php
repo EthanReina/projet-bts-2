@@ -12,7 +12,12 @@ switch($action) {
     // si l'action est formConnect, on affiche le formualire de connexion
     case 'formConnect':
 
-        include 'vue/vueUtilisateur/formConnect.php';
+        if(isset($_SESSION['connect'])) {
+            header('location: index.php');
+        } else {
+            include 'vue/vueUtilisateur/formConnect.php';
+        }
+        
 
         break;
 

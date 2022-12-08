@@ -123,69 +123,126 @@ switch($action) {
 
     case 'validFormNoteFrais':
 
-        if(isset($_POST['montant']) && isset($_POST['libelle']) && isset($_POST['vehicule'])) {
+        $info = DbUtilisateur::getInfoUser($_SESSION['email']);
+            if(count(DbUtilisateur::getVehicule($_SESSION['email']))>=1){
+                if(isset($_POST['montant']) && isset($_POST['libelle']) && isset($_POST['vehicule'])) {
 
-            $info = DbUtilisateur::getInfoUser($_SESSION['email']);
-            $infoVehicule = dbUtilisateur::getVehiculeById($_POST['vehicule']);
-
-            $result = DbUtilisateur::maxNoteFrais();
-
-
-
-            for($i = 0; $i < count($_POST['montant']); $i++) {
-
-
-
-                $images = $_FILES['images']['name'][$i];
-
-                $tmp = $_FILES['images']['tmp_name'][$i];
-
-                $ext = pathinfo($images, PATHINFO_EXTENSION);
-
-                if ($ext != '') {
-
-                    $chemin = "vue/uploads/".strtoupper($info['nom'])."_".$info['prenom']."_justificatif_".$_POST['libelle'][$i]."_".uniqid()."".".".$ext;
-
-                    move_uploaded_file($tmp, $chemin);
-    
-                   
-
-                } else {
-
-                    $chemin = '';
+                    $infoVehicule = dbUtilisateur::getVehiculeById($_POST['vehicule']);
+        
+                    $result = DbUtilisateur::maxNoteFrais();
+        
+        
+        
+                    for($i = 0; $i < count($_POST['montant']); $i++) {
+        
+        
+        
+                        $images = $_FILES['images']['name'][$i];
+        
+                        $tmp = $_FILES['images']['tmp_name'][$i];
+        
+                        $ext = pathinfo($images, PATHINFO_EXTENSION);
+        
+                        if ($ext != '') {
+        
+                            $chemin = "vue/uploads/".strtoupper($info['nom'])."_".$info['prenom']."_justificatif_".$_POST['libelle'][$i]."_".uniqid()."".".".$ext;
+        
+                            move_uploaded_file($tmp, $chemin);
+            
+                           
+        
+                        } else {
+        
+                            $chemin = '';
+                            
+                        }
+        
+                        DbUtilisateur::ajoutFc($_POST['libelle'][$i],$_POST['montant'][$i], $chemin,  $result['nb'] + 1 );
+                        
+        
+        
+        
+        
+        
                     
+                    }
+        
+                    $total_frais=  array_sum($_POST['montant']);
+                    $total = dbUtilisateur::calculIndemniteKilometrique($infoVehicule['puissance_fiscale'],$_POST['nb_kilometres']);
+        
+        
+        
+                    DbUtilisateur::ajoutFk($total,$_POST['nb_kilometres'], $result['nb'] + 1 );
+                    DbUtilisateur::ajoutNoteDeFrais($_POST['mission'],round($total + $total_frais), $info['id_utilisateur'] );
+        
+        
+        
+                    
+        
+                   header('location: index.php');
+        
+        
+                } else {
+                    echo '<h3 class="text-center">Vous n\'avez pas rempli tous les champs</h3>';
+                    echo '<a class="text-center nav-link mt-5" href="index.php?ctl=utilisateur&action=formNoteFrais">Retour</a>';
                 }
+            }else{
+                if(isset($_POST['montant']) && isset($_POST['libelle'])) {
 
-                DbUtilisateur::ajoutFc($_POST['libelle'][$i],$_POST['montant'][$i], $chemin,  $result['nb'] + 1 );
-                
-
-
-
-
-
+        
+                    $result = DbUtilisateur::maxNoteFrais();
+        
+        
+        
+                    for($i = 0; $i < count($_POST['montant']); $i++) {
+        
+        
+        
+                        $images = $_FILES['images']['name'][$i];
+        
+                        $tmp = $_FILES['images']['tmp_name'][$i];
+        
+                        $ext = pathinfo($images, PATHINFO_EXTENSION);
+        
+                        if ($ext != '') {
+        
+                            $chemin = "vue/uploads/".strtoupper($info['nom'])."_".$info['prenom']."_justificatif_".$_POST['libelle'][$i]."_".uniqid()."".".".$ext;
+        
+                            move_uploaded_file($tmp, $chemin);
             
+                           
+        
+                        } else {
+        
+                            $chemin = '';
+                            
+                        }
+        
+                        DbUtilisateur::ajoutFc($_POST['libelle'][$i],$_POST['montant'][$i], $chemin,  $result['nb'] + 1 );
+                        
+        
+                        DbUtilisateur::ajoutFk(0,0, $result['nb'] + 1 );
+        
+        
+        
+                    
+                    }
+        
+                    $total_frais=  array_sum($_POST['montant']);
+        
+        
+        
+                    DbUtilisateur::ajoutNoteDeFrais($_POST['mission'],round($total_frais), $info['id_utilisateur'] );
+        
+        
+        
+                    
+        
+                   header('location: index.php');
+        
+        
+                }
             }
-
-            $total_frais=  array_sum($_POST['montant']);
-            $total = dbUtilisateur::calculIndemniteKilometrique($infoVehicule['puissance_fiscale'],$_POST['nb_kilometres']);
-
-
-
-            DbUtilisateur::ajoutFk($total,$_POST['nb_kilometres'], $result['nb'] + 1 );
-            DbUtilisateur::ajoutNoteDeFrais($_POST['mission'],round($total + $total_frais), $info['id_utilisateur'] );
-
-
-
-            
-
-           header('location: index.php');
-
-
-        } else {
-            echo '<h3 class="text-center">Vous n\'avez pas rempli tous les champs</h3>';
-            echo '<a class="text-center nav-link mt-5" href="index.php?ctl=utilisateur&action=formNoteFrais">Retour</a>';
-        }
-            
         }
     
 ?>

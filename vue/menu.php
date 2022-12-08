@@ -226,11 +226,13 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                                         <form action="index.php?ctl=utilisateur&action=modifierLigneFc&idLigneFc=<?php echo $DonneesInfoLigneFc['id_fc']?>" method="post">
 
                                                             <div class="container w-75">
-                                                                <div class="mb-3">
-                                                                    <input type="text" class="form-control" name="libelle" placeholder="Libellé" required>
+                                                                <div class="mb-3 text-start">
+                                                                    <label for="" class="form-label ">Libelle</label>
+                                                                    <input type="text" class="form-control" name="libelle" placeholder="Libellé" value="<?php echo $DonneesInfoLigneFc['libelle'] ?>" required>
                                                                 </div>
-                                                                <div class="mb-3">
-                                                                    <input type="text" class="form-control" name="montant" placeholder="Montant" required>
+                                                                <div class="mb-3 text-start">
+                                                                    <label for="" class="form-label">Montant</label>
+                                                                    <input type="number" class="form-control" name="montant" placeholder="Montant" value="<?php echo $DonneesInfoLigneFc['montant_fc'] ?>" required>
                                                                 </div>
 
                                                                 <div class="modal-footer">

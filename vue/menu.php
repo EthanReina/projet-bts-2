@@ -474,7 +474,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
 
 
-<?php } }
+<?php } } }
 
 
 ?>

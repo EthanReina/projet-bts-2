@@ -123,10 +123,10 @@ switch($action) {
 
     case 'validFormNoteFrais':
 
-        if(isset($_POST['montant']) && isset($_POST['libelle']) && isset($_POST['vehicule'])) {
+        if(isset($_POST['montant']) && isset($_POST['libelle'])) {
 
             $info = DbUtilisateur::getInfoUser($_SESSION['email']);
-            $infoVehicule = dbUtilisateur::getVehiculeById($_POST['vehicule']);
+            isset($_POST['vehicule']) ? $infoVehicule = dbUtilisateur::getVehiculeById($_POST['vehicule']) : $infoVehicule = null;
 
             $result = DbUtilisateur::maxNoteFrais();
 
@@ -167,11 +167,13 @@ switch($action) {
             }
 
             $total_frais=  array_sum($_POST['montant']);
-            $total = dbUtilisateur::calculIndemniteKilometrique($infoVehicule['puissance_fiscale'],$_POST['nb_kilometres']);
+
+            isset($_POST['vehicule']) ? $total = dbUtilisateur::calculIndemniteKilometrique($infoVehicule['puissance_fiscale'],$_POST['nb_km_input']) : $total = 0;
 
 
 
-            DbUtilisateur::ajoutFk($total,$_POST['nb_kilometres'], $result['nb'] + 1 );
+            DbUtilisateur::ajoutFk($total,isset($_POST['nb_km_input']) ? $_POST['nb_km_input'] : 0, $result['nb'] + 1 );
+
             DbUtilisateur::ajoutNoteDeFrais($_POST['mission'],round($total + $total_frais), $info['id_utilisateur'] );
 
 

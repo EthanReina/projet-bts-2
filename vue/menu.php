@@ -30,6 +30,8 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 
     include 'model/dbUtilisateur.php';
 
+
+
     
     
     if($_SESSION['droit'] == 1) { 

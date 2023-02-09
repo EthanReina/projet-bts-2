@@ -1,4 +1,9 @@
 <div class="container w-50">
+    <?php if(count($infoVehicule) == 0) {
+        echo '<div class="alert alert-danger my-5" role="alert">
+        Attention, vous vous apprêtez à créer une note de frais sans véhicule. Si vous souhaitez ajouter un véhicule, rendez-vous dans la rubrique "Profil" ou cliquer <a href="index.php?ctl=utilisateur&action=profil"> ici </a>.
+        </div>';
+    } ?>
 
     <form action="index.php?ctl=utilisateur&action=validFormNoteFrais" method="post" enctype="multipart/form-data">
     <div class="mb-3">
@@ -32,8 +37,7 @@
                     </select>
 
                     <div class="mt-5">
-                        <label for="exampleInputEmail1" class="form-label">Nombres de kilomètres parcourus</label>
-                        <input type="number" class="form-control" id="" aria-describedby="emailHelp" name="nb_kilometres" required>
+                        <?php include "v_itineraire.php"; ?>
                     </div>
 
                 <?php } 
@@ -60,7 +64,7 @@
 
                             <div class="col-4" style="width: 30%"">
                                 <label for="">Montant (€)</label>
-                                <input type="number" class="form-control" name="montant[]" required>
+                                <input type="number" step="0.01" class="form-control" name="montant[]" required>
                             </div>
                             
                             <div class="col-4" style="width: 10%">

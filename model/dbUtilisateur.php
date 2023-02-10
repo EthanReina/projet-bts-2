@@ -125,6 +125,15 @@ class DbUtilisateur
 
     }
 
+    // updateMontantNoteDeFrais
+    public static function updateMontantNoteDeFrais($id_note, $montant) {
+
+        $sql = "UPDATE note_de_frais SET montant='$montant' WHERE id_note='$id_note'";
+
+        connectPdo::getObjPdo()->exec($sql);
+
+    }
+
     
 
     public static function getAllNoteDeFrais() {
@@ -135,6 +144,17 @@ class DbUtilisateur
         return $result;
 
     }
+
+    // getLigneFcById
+    public static function getLigneFcById($id_ligne_fc) {
+
+        $sql="select * from ligne_fc where id_fc='$id_ligne_fc'";
+        $objResultat=connectPdo::getObjPdo()->query($sql);
+        $result=$objResultat->fetch();
+        return $result;
+
+    }
+
 
     public static function getLigneFc($id_note) {
 

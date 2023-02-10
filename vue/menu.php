@@ -209,10 +209,10 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
                                                                 }
                                                             ?>
                                                         </td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <a href="index.php?ctl=utilisateur&action=supprimerLigneFc&idLigneFc=<?php echo $DonneesInfoLigneFc['id_fc'] ?>"><img src="vue\images\trash.png" alt="supprimer" height="20" style="padding-right:10px;"></a>
                                                             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1"><img src="vue\images\crayon.png" alt="modifier" height="20"></a>
-                                                        </td>
+                                                        </td> -->
                                                     </tr>
 
                                                     <!-- Le Pop-up qui s'affiche sur le clic du bouton ci-dessus -->

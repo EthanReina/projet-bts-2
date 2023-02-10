@@ -111,12 +111,12 @@
             <div class="p-2 border fw-bold text-warning fs-5 text-center">
                 
                 <?php
-                    if(in_array(2, $statusGlobal)) {
+                    if(in_array(2, isset($statusGlobal) ? $statusGlobal : [])) {
                         echo '<p class="text-danger fw-bold">Refusé</p>';
                         DbUtilisateur::changerStatutGlobal(2, $result['id_note']);
 
                     }
-                    else if(in_array(0, $statusGlobal)) {
+                    else if(in_array(0, isset($statusGlobal) ? $statusGlobal : [])) {
                         echo '<p class="text-warning fw-bold">En attente</p>';
                         DbUtilisateur::changerStatutGlobal(0, $result['id_note']);
                     }

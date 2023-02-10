@@ -112,11 +112,23 @@ switch($action) {
         break;
         
     case 'supprimerLigneFc':
+        $infoLigneFc = DbUtilisateur::getLigneFcById($_GET['idLigneFc']);
+        $montant = $infoLigneFc['montant_fc'];
+
+        $infoNote = DbUtilisateur::getNoteDeFraisById($infoLigneFc['id_note']);
+        $montantTotal = $infoNote['montant'] - $montant;
+
+        DbUtilisateur::updateMontantNoteDeFrais($infoNote['id_note'], $montantTotal);
         DbUtilisateur::supprimerLigneFc($_GET['idLigneFc']);
+
+
+        //DbUtilisateur::supprimerLigneFc($_GET['idLigneFc']);
         header("location: index.php");
         break;
 
     case 'modifierLigneFc':
+
+
         DbUtilisateur::modifierLigneFc($_POST['libelle'],$_POST['montant'],$_GET['idLigneFc']);
         header("location: index.php");
         break;

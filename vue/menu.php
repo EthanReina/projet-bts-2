@@ -318,5 +318,7 @@ if(isset($_SESSION['connect']) && !isset($_GET['action'])) {
 <?php } }
 
 ?>
-<h1> Compte utilisateur : identifiant : ethan@reina mot de passe : ethan</h1>
-<h1> Compte admin : identifiant admin@admin mot de passe : admin</h1>
+<div class="position-absolute top-0 start-50 translate-middle"> 
+    <h2> Compte utilisateur : identifiant : ethan@reina mot de passe : ethan</h2>
+    <h2> Compte admin : identifiant admin@admin mot de passe : admin</h2>
+</div>

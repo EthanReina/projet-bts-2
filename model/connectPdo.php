@@ -12,7 +12,7 @@ class connectPdo
 		 
 		 if(!isset(self::$db))
 		 { 
-		  self::$db = new PDO('mysql:host=localhost;dbname=note_de_frais', 'root', '');  // PDO Connexion base de données 
+		  self::$db = new PDO('mysql:host=mysql-projetbts2.alwaysdata.net;dbname=projetbts2_note_de_frais', '284347_root', '?Quenthi2804');  // PDO Connexion base de données 
 		  self::$db ->query('SET NAMES utf8'); 
 		  self::$db->query('SET CHARACTER SET utf8');   
 		 } 

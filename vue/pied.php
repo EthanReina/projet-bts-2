@@ -12,10 +12,6 @@
         </div>
       </div>
     </div>
-    <div class="position-absolute top-50 start-0 translate-middle;"> 
-      <h2> Compte utilisateur : identifiant : ethan@reina mot de passe : ethan</h2>
-      <h2> Compte admin : identifiant admin@admin mot de passe : admin</h2>
-    </div>
   </footer>
 
 </body>
